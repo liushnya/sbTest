@@ -1,0 +1,59 @@
+<html>
+<script src="jquery-3.4.1.min.js"></script>
+<body>
+
+<script type="text/javascript">
+
+    function showAll() {
+
+        $.getJSON( "/employees", function( data ) {
+
+            $.each( data, function( key, val ) {
+                var jsonString = JSON.stringify(val);
+                var obj = JSON.parse(jsonString);
+                var tr;
+
+                    tr = $('<tr/>');
+                    tr.append("<td>" + obj.id + "</td>");
+                    tr.append("<td>" + obj.name + "</td>");
+                    tr.append("<td>" + obj.salary + "</td>");
+                    tr.append("<td>" + obj.designation + "</td>");
+                    $('table').append(tr);
+
+            });
+
+        });
+
+    }
+
+
+</script>
+<table id="table" border='1'>
+    <tr>
+        <th align="center" width="50">Id</th>
+        <th align="center" width="100">Name</th>
+        <th align="center" width="100">Salary</th>
+        <th align="center" width="100">Designation</th>
+    </tr>
+</table>
+
+<div>
+    <button id="b01" onclick="showAll()">Show All</button>
+    <style>
+        #b01 {
+            margin: 5px;
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+
+</div>
+
+
+
+
+</body>
+
+
+</html>
+
